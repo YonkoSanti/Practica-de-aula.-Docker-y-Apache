@@ -26,14 +26,15 @@
 ---
 
 ## Introducción
-Este documento detalla el paso a paso de la práctica de aula de Docker y Apache para desplegar un servidor web sobre un contenedor basado en Debian, automatizar su construcción mediante un `Dockerfile`, realizar copias de archivos en caliente y estructurar un despliegue completo mediante Docker Compose.
+Practica realizada en clase sobre Debian y apache 
 
 ---
 
 ## Paso 1: Descargar la imagen de Debian
 Primero, buscamos y descargamos la imagen oficial de Debian desde Docker Hub. En este caso utilizaremos la versión `trixie-backports`.
 
-![alt text](image.png)
+<img width="642" height="358" alt="image" src="https://github.com/user-attachments/assets/4aed4f4d-eb8b-4d97-9766-44f8d2b66cab" />
+
 
 ```bash
 docker pull debian:trixie-backports
