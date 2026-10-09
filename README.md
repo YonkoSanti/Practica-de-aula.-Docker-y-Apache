@@ -51,8 +51,7 @@ docker run -dit --name mi-servidor-debian -p 80:80 debian:trixie-backports
 ```
 <img width="916" height="101" alt="image" src="https://github.com/user-attachments/assets/1a81fff3-b7dc-4b5c-a86f-c368ccd8efcb" />
 
-
-Como debería salir
+Como debería salir:
 <img width="916" height="63" alt="image" src="https://github.com/user-attachments/assets/dfb535d9-af2d-4388-93c7-214029c9afd2" />
 
 ---
@@ -88,14 +87,14 @@ service apache2 start
 ---
 
 ## Paso 6: Comprobar el funcionamiento desde el navegador
-Abrimos nuestro navegador web local y accedemos a `http://localhost`. Deberá mostrarse la página por defecto de bienvenida de Apache2 en Debian (*"It works!"*).
+Abrimos nuestro navegador web local y accedemos a `http://localhost`. Debe mostrarse la página por defecto de bienvenida de Apache2 en Debian.
 
 <img width="660" height="355" alt="image" src="https://github.com/user-attachments/assets/ae6deefc-3a2d-4cb3-b318-f5cd2f5643fb" />
 
 ---
 
 ## Paso 7: Crear una página HTML personalizada (`santi.html`)
-Creamos una página web sencilla directamente en el directorio raíz de publicaciones de Apache dentro del contenedor:
+Creamos una página web sencilla  en el directorio raíz de publicaciones de Apache dentro del contenedor:
 
 ```bash
 echo "<html><body><h1>Hola, soy Santi y mi servidor Apache funciona en Docker</h1></body></html>" > /var/www/html/santi.html
@@ -118,12 +117,11 @@ Borramos lo creado y volveremos a hacerlo mediante un dockerfile
 ---
 
 ## Paso 10: Automatizar con un `Dockerfile`
-Creamos un fichero llamado `Dockerfile` en nuestro equipo local para empaquetar y automatizar todo el proceso anterior sin necesidad de configurarlo manualmente paso a paso:
+Creamos un fichero llamado `Dockerfile` en nuestro equipo local para automatizar todo el proceso anterior sin necesidad de configurarlo manualmente paso a paso como antes:
 
 > **Nota:** Debemos tener creado un HTML llamado `santi.html` con el contenido  que queramos mostrar.
 
 <img width="916" height="295" alt="image" src="https://github.com/user-attachments/assets/549aa5ee-3b79-4482-bfde-2558b4d1d756" />
-
 
 ```dockerfile
 # Usamos la imagen Debian oficial
@@ -145,11 +143,10 @@ CMD ["apache2ctl", "-D", "FOREGROUND"]
 
 <img width="916" height="394" alt="image" src="https://github.com/user-attachments/assets/4e453deb-c8a3-442a-955a-55e57cc669d3" />
 
-
 ---
 
 ## Paso 11: Construir la imagen desde el `Dockerfile`
-Compilamos nuestra imagen personalizada etiquetándola con el nombre `santi-debian-apache`:
+Compilamos nuestra imagen etiquetándola con el nombre `santi-debian-apache`:
 
 ```bash
 docker build -t santi-debian-apache .
@@ -160,7 +157,7 @@ docker build -t santi-debian-apache .
 ---
 
 ## Paso 12: Ejecutar el contenedor basado en nuestra imagen personalizada
-Lanzamos el contenedor recién creado mapeándolo al puerto `8080` de nuestra máquina anfitriona:
+Lanzamos el contenedor recién creado mapeándolo al puerto `8080`.
 
 ```bash
 docker run -d -p 8080:80 --name contenedor-santi santi-debian-apache
@@ -180,7 +177,7 @@ docker exec -it contenedor-santi elinks http://localhost/santi.html
 ---
 
 ## Paso 13: Copiar un archivo local con `docker cp`
-Para demostrar el traspaso de ficheros en caliente hacia un contenedor en ejecución, creamos un archivo local `santi_extra.html` y lo copiamos mediante el comando `docker cp`:
+Creamos un archivo local `santi_extra.html` y lo copiamos mediante el comando `docker cp`:
 
 ```bash
 echo "<html><body><h1>Fichero extra copiado con docker cp para Santi</h1></body></html>" > santi_extra.html
@@ -191,7 +188,7 @@ docker cp santi_extra.html contenedor-santi:/var/www/html/extra.html
 ---
 
 ## Paso 14: Configurar el despliegue con `docker-compose.yml` y volúmenes
-Creamos un fichero `docker-compose.yml` para orquestar el despliegue del servicio web mapeando mediante un volumen la carpeta local `./html-local` con la ruta de contenido web del contenedor (`/var/www/html`):
+Creamos un fichero `docker-compose.yml` para  el despliegue del servicio web con la ruta de contenido web del contenedor (`/var/www/html`):
 
 <img width="916" height="360" alt="image" src="https://github.com/user-attachments/assets/07c003dd-1660-4895-a8f7-2de0b95f3f6c" />
 
