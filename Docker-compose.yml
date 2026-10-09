@@ -1,0 +1,8 @@
+services:
+  web:
+    image: santi-debian-apache
+    container_name: apache-santi-compose
+    ports:
+      - "8090:80"
+    volumes:
+      - ./html-local:/var/www/html
