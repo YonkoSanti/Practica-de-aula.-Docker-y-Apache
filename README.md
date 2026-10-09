@@ -141,8 +141,9 @@ EXPOSE 80
 # Ejecutar Apache en primer plano para evitar que el contenedor se detenga
 CMD ["apache2ctl", "-D", "FOREGROUND"]
 ```
-![alt text](image-11.png)
-![alt text](image-12.png)
+<img width="916" height="480" alt="image" src="https://github.com/user-attachments/assets/fcd831b0-2c6d-4969-9178-d1c7166bd996" />
+
+<img width="916" height="394" alt="image" src="https://github.com/user-attachments/assets/4e453deb-c8a3-442a-955a-55e57cc669d3" />
 
 
 ---
@@ -153,8 +154,9 @@ Compilamos nuestra imagen personalizada etiquetándola con el nombre `santi-debi
 ```bash
 docker build -t santi-debian-apache .
 ```
-![alt text](image-13.png)
-![alt text](image-14.png)
+<img width="916" height="210" alt="image" src="https://github.com/user-attachments/assets/9e8dc2f4-0b2e-4c57-8ae6-c2433523ce0b" />
+<img width="916" height="100" alt="image" src="https://github.com/user-attachments/assets/c501781a-20d4-49a2-8bc3-eee168dee07a" />
+
 ---
 
 ## Paso 12: Ejecutar el contenedor basado en nuestra imagen personalizada
@@ -163,17 +165,18 @@ Lanzamos el contenedor recién creado mapeándolo al puerto `8080` de nuestra m�
 ```bash
 docker run -d -p 8080:80 --name contenedor-santi santi-debian-apache
 ```
-![alt text](image-15.png)
-![alt text](image-16.png)
+<img width="916" height="94" alt="image" src="https://github.com/user-attachments/assets/99376a33-0fd3-40f3-92f6-4e0791848038" />
+<img width="916" height="123" alt="image" src="https://github.com/user-attachments/assets/af03820f-dd6a-423d-a862-0331a9339f51" />
 
 Y si queremos comprobar el correcto funcionamiento interno mediante elinks accediendo al contenedor en ejecución:
 
 ```bash
 docker exec -it contenedor-santi elinks http://localhost/santi.html
 ```
+<img width="916" height="289" alt="image" src="https://github.com/user-attachments/assets/349c8b86-3448-4fce-a413-864dd4d38515" />
+<img width="916" height="263" alt="image" src="https://github.com/user-attachments/assets/8ae2651f-c009-48b3-a5e4-ace0edcc40dc" />
 
-![alt text](image-17.png)
-![alt text](image-18.png)
+
 ---
 
 ## Paso 13: Copiar un archivo local con `docker cp`
@@ -183,12 +186,14 @@ Para demostrar el traspaso de ficheros en caliente hacia un contenedor en ejecuc
 echo "<html><body><h1>Fichero extra copiado con docker cp para Santi</h1></body></html>" > santi_extra.html
 docker cp santi_extra.html contenedor-santi:/var/www/html/extra.html
 ```
-![alt text](image-19.png)
+<img width="916" height="126" alt="image" src="https://github.com/user-attachments/assets/35df131b-182b-4b85-a2a3-842a42dec8d5" />
+
 ---
 
 ## Paso 14: Configurar el despliegue con `docker-compose.yml` y volúmenes
 Creamos un fichero `docker-compose.yml` para orquestar el despliegue del servicio web mapeando mediante un volumen la carpeta local `./html-local` con la ruta de contenido web del contenedor (`/var/www/html`):
-![alt text](image-20.png)
+
+<img width="916" height="360" alt="image" src="https://github.com/user-attachments/assets/07c003dd-1660-4895-a8f7-2de0b95f3f6c" />
 
 ```yaml
 services:
@@ -200,12 +205,14 @@ services:
     volumes:
       - ./html-local:/var/www/html
 ```
-![alt text](image-21.png)
+<img width="916" height="408" alt="image" src="https://github.com/user-attachments/assets/128c35a6-7525-4ac3-82f7-e527862c778a" />
+
 
 Finalmente, levantamos la infraestructura definida ejecutando:
 
 ```bash
 docker compose up -d
 ```
-![alt text](image-22.png)
+<img width="916" height="164" alt="image" src="https://github.com/user-attachments/assets/b01b83ab-f858-40f0-86e4-c7c6740fa0ec" />
+
 ---
