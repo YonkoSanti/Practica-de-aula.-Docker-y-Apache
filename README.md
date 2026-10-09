@@ -75,7 +75,7 @@ apt update && apt install -y apache2
 <img width="916" height="228" alt="image" src="https://github.com/user-attachments/assets/0d82e2a8-be31-4d25-845d-6c1aa21ab3f1" />
 
 ---
-![alt text](image-5.png)
+
 ## Paso 5: Arrancar el servicio Apache
 Iniciamos manualmente el servicio web dentro del contenedor:
 
