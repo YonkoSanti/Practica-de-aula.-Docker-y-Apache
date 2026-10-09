@@ -39,7 +39,8 @@ Primero, buscamos y descargamos la imagen oficial de Debian desde Docker Hub. En
 ```bash
 docker pull debian:trixie-backports
 ```
-![alt text](image-1.png)
+<img width="916" height="145" alt="image" src="https://github.com/user-attachments/assets/8a4527c3-d2a2-4ed4-80c4-7eab07d67432" />
+
 ---
 
 ## Paso 2: Arrancar el contenedor interactivo y en segundo plano
@@ -48,10 +49,11 @@ Arrancamos el contenedor asignándole un nombre (`mi-servidor-debian`), mapeando
 ```bash
 docker run -dit --name mi-servidor-debian -p 80:80 debian:trixie-backports
 ```
-![alt text](image-2.png)
+<img width="916" height="101" alt="image" src="https://github.com/user-attachments/assets/1a81fff3-b7dc-4b5c-a86f-c368ccd8efcb" />
+
 
 Como debería salir
-![alt text](image-3.png)
+<img width="916" height="63" alt="image" src="https://github.com/user-attachments/assets/dfb535d9-af2d-4388-93c7-214029c9afd2" />
 
 ---
 
@@ -61,7 +63,8 @@ Accedemos al interior del contenedor en ejecución utilizando el comando `exec` 
 ```bash
 docker exec -it mi-servidor-debian bash
 ```
-![alt text](image-4.png)
+<img width="916" height="101" alt="image" src="https://github.com/user-attachments/assets/030d93d6-62e5-4ad9-b0c6-38fd5f6bd935" />
+
 ---
 
 ## Paso 4: Instalar Apache2 en el contenedor
@@ -70,22 +73,25 @@ Una vez dentro de la shell del contenedor con privilegios de root, actualizamos 
 ```bash
 apt update && apt install -y apache2
 ```
-![alt text](image-5.png)
----
+<img width="916" height="228" alt="image" src="https://github.com/user-attachments/assets/0d82e2a8-be31-4d25-845d-6c1aa21ab3f1" />
 
+---
+![alt text](image-5.png)
 ## Paso 5: Arrancar el servicio Apache
 Iniciamos manualmente el servicio web dentro del contenedor:
 
 ```bash
 service apache2 start
 ```
-![alt text](image-6.png)
+<img width="916" height="102" alt="image" src="https://github.com/user-attachments/assets/b2e59f29-f2fe-4dad-b997-3652d75782a7" />
+
 ---
 
 ## Paso 6: Comprobar el funcionamiento desde el navegador
 Abrimos nuestro navegador web local y accedemos a `http://localhost`. Deberá mostrarse la página por defecto de bienvenida de Apache2 en Debian (*"It works!"*).
 
-![alt text](image-7.png)
+<img width="660" height="355" alt="image" src="https://github.com/user-attachments/assets/ae6deefc-3a2d-4cb3-b318-f5cd2f5643fb" />
+
 ---
 
 ## Paso 7: Crear una página HTML personalizada (`santi.html`)
@@ -94,14 +100,16 @@ Creamos una página web sencilla directamente en el directorio raíz de publicac
 ```bash
 echo "<html><body><h1>Hola, soy Santi y mi servidor Apache funciona en Docker</h1></body></html>" > /var/www/html/santi.html
 ```
-![alt text](image-8.png)
+<img width="916" height="74" alt="image" src="https://github.com/user-attachments/assets/8d2d166a-be81-4c1e-8ed4-457226f0f34a" />
+
 ---
 
 ## Paso 8: Acceder a la página desde el navegador
 Comprobamos que la nueva página es accesible desde el navegador web introduciendo:
 `http://localhost/santi.html`
 
-![alt text](image-9.png)
+<img width="795" height="192" alt="image" src="https://github.com/user-attachments/assets/e18d0c2b-b3fd-4782-a846-248024a59f23" />
+
 ---
 
 ## Paso 9: Borramos todo 
@@ -114,7 +122,8 @@ Creamos un fichero llamado `Dockerfile` en nuestro equipo local para empaquetar 
 
 > **Nota:** Debemos tener creado un HTML llamado `santi.html` con el contenido  que queramos mostrar.
 
-![alt text](image-10.png)
+<img width="916" height="295" alt="image" src="https://github.com/user-attachments/assets/549aa5ee-3b79-4482-bfde-2558b4d1d756" />
+
 
 ```dockerfile
 # Usamos la imagen Debian oficial
